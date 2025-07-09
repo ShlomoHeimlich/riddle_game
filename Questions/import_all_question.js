@@ -9,5 +9,5 @@ export async function ReadAllQuestions(){
             console.log(err.message)
     }
 }
-console.log('sdlomo');
+
  
