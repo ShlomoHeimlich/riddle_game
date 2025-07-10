@@ -1,4 +1,4 @@
-import { Riddle } from "../classes/Riddle.js"; 
+import { Riddle } from "../client/classes/Riddle.js"; 
 import { readFile,writeFile } from 'fs/promises';
 import readline from 'readline-sync';
 import{Writing_To_DB}from "./Crud_services.js"

@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "name": "question_game-new_branch6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node --watch server.app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShlomoHeimlich/riddle_game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShlomoHeimlich/riddle_game/issues"
+  },
+  "homepage": "https://github.com/ShlomoHeimlich/riddle_game#readme",
+  "description": ""
+}
