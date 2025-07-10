@@ -1,4 +1,4 @@
-import { ReadAllQuestions } from "../questions/import_all_question.js"
+import { ReadAllQuestions } from "../client/Questions/import_all_question.js"
 import { writeFile } from 'fs/promises';
 import readline from 'readline-sync';
 

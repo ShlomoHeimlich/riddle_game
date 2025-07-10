@@ -1,6 +1,6 @@
 import { function_play ,Player_registration} from "./services/riddle.services.js";
 import { User } from "./classes/User.name.js";
-import {ReadAllQuestions} from "./questions/import_all_question.js"
+import {ReadAllQuestions} from "./Questions/import_all_question.js"
 import {Manager} from "./services/Manager.menu.js"
 
 
