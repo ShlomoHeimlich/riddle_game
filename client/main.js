@@ -1,5 +1,5 @@
 import { Manager } from "./services/Manager.menu.js"
-import { play_game } from "./play.js";
+import { flow_game } from "./services/play_game.js";
 import readline from 'readline-sync';
 
 const user_name = readline.question('What is your name?');
@@ -9,7 +9,7 @@ if (user_name == 1234) {
 }
 else {
    try {
-      const new_game = play_game(await fetch("http://localhost:4545/AllQuestions"))
+      const new_game = flow_game(await fetch("http://localhost:4545/AllQuestions"))
       console.log(await new_game);
    } catch (err) {
       console.log(err.message)

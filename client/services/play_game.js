@@ -1,7 +1,7 @@
 import readline from 'readline-sync';
 
 
-export async function play_game(all_questions) {
+export async function flow_game(all_questions) {
     all_questions = await all_questions.json()
     const start = new Date();
     all_questions.forEach(q => play(q))
@@ -19,5 +19,4 @@ export function play(q) {
         if (answer_user == q.correctAnswer) { flag = true }
     }
 }
-
 

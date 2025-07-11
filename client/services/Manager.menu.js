@@ -28,10 +28,10 @@ export async function Manager() {
     case "2":
       try {
         riddle = {};
-        riddle["id"] = readline.question("Enter the ID of the riddle you want to update.")
         riddle["level"] = readline.question("Enter difficulty level")
         riddle["riddle"] = readline.question('Enter the new riddle?');
         riddle["correctAnswer"] = readline.question('Enter the correctAnswer?');
+        riddle["id"] = readline.question("Enter the ID of the riddle you want to update.")
         answer = await fetch('http://localhost:4545/update_riddle', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(riddle) })
           .then(res => res.text())
         console.log(answer);
