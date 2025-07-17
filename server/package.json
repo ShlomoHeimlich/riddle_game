@@ -1,15 +1,16 @@
 {
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mysql2": "^3.14.2",
+    "sequelize": "^6.37.7"
   },
   "name": "question_game-new_branch6",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node --watch server.app.js"
+    "start": "node --watch --env-file=.env server.app.js"
   },
   "repository": {
     "type": "git",
