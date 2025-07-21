@@ -9,13 +9,32 @@ if (user_name == 1234) {
 }
 else {
    try {
-      const new_game = flow_game(await fetch("http://localhost:4545/AllQuestions"))
-      console.log(await new_game);
-   } catch (err) {
-      console.log(err.message)
+      const time_login = new Date;
+      const questions = await fetch("http://localhost:4545/AllQuestions")
+      const new_game =await flow_game(questions)
+            const answer=fetch("http://localhost:4545/player/creat", {
+               method: "POST",
+               headers: {
+                  "Content-Type": "application/json"
+               },
+               body: JSON.stringify(
+                  {
+                     name: user_name,
+                     time_to_solve: new_game,
+                     time_login: time_login
+                  }
+               )
+            }).then(answer =>  answer.text()).then(data=>{console.log(data);})
+            
+   } catch (error) {
+      console.log(error);
    }
 }
-console.log("shlomo heimlich");
+
+
+
+
+
 
 
 

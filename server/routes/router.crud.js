@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { ReadAllQuestions, deleted, Create_riddle, update_riddle } from "../controler/controler.js"
+import { ReadAllQuestions, deleted, Create_riddle, update_riddle } from "../controler/controler.riddle.js"
 
 
 router.get("/AllQuestions", async (req, res) => {
