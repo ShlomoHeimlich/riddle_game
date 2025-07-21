@@ -4,8 +4,10 @@ export async function Manager() {
   let riddle;
   console.log('To create riddle press 1');
   console.log('To update riddle press 2');
-  console.log('To read riddle press 3');
+  console.log('To read all riddles press 3');
   console.log('To delete riddle press 4');
+  console.log('To read all players press 5');
+  console.log('To read the The fast player press 6');
   let choice = readline.question('What is your choice?');
   switch (choice) {
 
@@ -43,7 +45,8 @@ export async function Manager() {
 
     case "3":
       try {
-        answer = await fetch("http://localhost:4545/AllQuestions").then(res => res.json())
+        answer = await fetch("http://localhost:4545/AllQuestions")
+        .then(res => res.json())
         console.log(answer);
         break;
       } catch (error) {
@@ -60,8 +63,28 @@ export async function Manager() {
       } catch (error) {
         console.log(error.message);
       }
-      break;
+
+
+      case "5":
+      {
+        try{ 
+        const all_players = await fetch ("http://localhost:4545/player/Allplayers")
+         .then(res=>res.json())
+         console.log(all_players);
+        }catch(error)
+        {console.log(error);}
+      }
+      case "6":{
+        try{
+        const all_players = await fetch ("http://localhost:4545/player/fastest ")
+         .then(res=>res.json())
+         console.log('aaa:',all_players);
+        }catch(error)
+        {console.log(error);}
+      }
   }
+  
+
 }
 
 

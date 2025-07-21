@@ -7,6 +7,7 @@ export async function flow_game(all_questions) {
     all_questions.forEach(q => play(q))
     const stop = new Date();
     const all_time = (stop - start) / 1000
+    console.log('all time is: ' ,all_time);
     return all_time;
 }
 

@@ -1,9 +1,8 @@
-import { readFile, writeFile } from "node:fs/promises"
-import conn from "../db/riddle.db.js"
+import database from "../db/riddle.db.js"
 
 export async function ReadAllQuestions() {
     try {
-        let all_questions = await conn.collection("riddles").find().toArray()
+        let all_questions = await database.collection("riddles").find().toArray()
         return all_questions
     } catch (err) {
         console.log(err.message)
@@ -14,7 +13,7 @@ export async function Create_riddle(obj) {
     let all_questions = await ReadAllQuestions()
     try {
         obj["id"] = all_questions.length + 1;
-        await conn.collection("riddles").insertOne(obj)
+        await database.collection("riddles").insertOne(obj)
         return 'success'
     } catch (err) {
         console.log(err.message)
@@ -23,9 +22,10 @@ export async function Create_riddle(obj) {
 
 export async function update_riddle(obj) {
     try {
-        const result = conn.collection("riddles").findOne({ id: obj.id })
+        const result = await database.collection("riddles").findOne({ id: obj.id })
+        console.log('result in redel', result);
         if (result) {
-            await conn.collection("riddles").updateOne({ id: obj.id }, { $set: obj })
+            await database.collection("riddles").updateOne({ id: obj.id }, { $set: obj })
             return 'success'
         }
         else {
@@ -39,9 +39,9 @@ export async function update_riddle(obj) {
 export async function deleted(id_yuser) {
     try {
         id_yuser = parseInt(id_yuser)
-        const result = await conn.collection("riddles").findOne({ id: id_yuser })
+        const result = await database.collection("riddles").findOne({ id: id_yuser })
         if (result) {
-            await conn.collection("riddles").deleteOne({ id: id_yuser })
+            await database.collection("riddles").deleteOne({ id: id_yuser })
             return 'success'
         }
         else {
@@ -54,11 +54,5 @@ export async function deleted(id_yuser) {
 
 
 
-export async function Writing_To_DB(file_name, input) {
-    try {
-        await writeFile(file_name, input)
-    } catch (err) {
-        console.log(err.message);
-    }
-}
+
 
