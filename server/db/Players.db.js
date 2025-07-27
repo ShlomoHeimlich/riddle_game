@@ -15,15 +15,21 @@ export const players_database = sequelize.define('players', {
     },
     Time_login: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     },
     Time_to_solve: {
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: true
+    },
+    manager:{
+       type: DataTypes.STRING,
+    },
+    Password:{
+        type: DataTypes.STRING, 
     }
 }
 );
-
+ 
 export async function creat_table() {
     try {
          await sequelize.sync();
