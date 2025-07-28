@@ -1,5 +1,6 @@
 import { players_database } from "../db/Players.db.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
 
 export async function Allplayers() {
     try {
@@ -47,7 +48,7 @@ export async function fastest() {
     let name_faste = null;
     for (const name of all_players) {
         if (name.Time_to_solve == null) continue;
-        if (name_faste == null ||name_faste.Time_to_solve == null ||name.Time_to_solve < name_faste.Time_to_solve) {
+        if (name_faste == null || name_faste.Time_to_solve == null || name.Time_to_solve < name_faste.Time_to_solve) {
             name_faste = name;
         }
     }
@@ -91,7 +92,14 @@ export async function checkMeniger(obj) {
     if (name) {
         const meniger = await players_database.findOne({ where: { Name: name } })
         if (meniger && meniger.manager === "true") {
-            return "Verified manager"
+            const SECRET_KEY = process.env.SECRET_KEY
+            console.log(SECRET_KEY);
+            const payload = {
+                name: name,
+                role: 'manager'
+            }
+            const token = jwt.sign(payload, SECRET_KEY, {expiresIn: '60s'})
+            return token
         }
         else {
             return `is not Verified manager`

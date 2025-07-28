@@ -25,10 +25,10 @@ export async function User_definition(user_name) {
                 )
             })
             const name = await res.text();
-            if(name==="Verified manager"){
-                Manager()
-                return "manager"}
-            else{return "is not Verified manager"}
+            if(name=="is not Verified manager"){
+                return "is not Verified manager"}
+            else
+                {await Manager(name)}
             break;
         case "2":
             return "Guest";

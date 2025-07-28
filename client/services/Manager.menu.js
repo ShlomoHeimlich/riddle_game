@@ -1,5 +1,5 @@
 import readline from 'readline-sync';
-export async function Manager() {
+export async function Manager(token) {
   let answer;
   let riddle;
   let exit = false
@@ -53,15 +53,24 @@ export async function Manager() {
         break
       case "4":
         try {
-          const id = readline.question("Enter the ID of the riddle you want to delete.")
-          answer = await fetch(`http://localhost:4545/delete/${id}`, { method: 'DELETE', })
-            .then(res => res.text())
-          console.log(answer);
-          break
+          const id = readline.question("Enter the ID of the riddle you want to delete: ");
+          const res = await fetch(`http://localhost:4545/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+              "Authorization": "Bearer " + token,
+              "Content-Type": "application/json"
+            }
+          });
+          if (res.status === 401) {
+            console.log("Token expired or invalid. Returning to menu...");
+            break; 
+          }
+          const text = await res.text();
+          console.log(text);
         } catch (error) {
-          console.log(error.message);
+          console.log("Error in deleting riddle:", error.message);
         }
-        break
+        break;
       case "5":
         {
           try {
