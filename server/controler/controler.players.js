@@ -98,7 +98,7 @@ export async function checkMeniger(obj) {
                 name: name,
                 role: 'manager'
             }
-            const token = jwt.sign(payload, SECRET_KEY, {expiresIn: '60s'})
+            const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '60s' })
             return token
         }
         else {
