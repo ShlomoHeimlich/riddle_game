@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes } from "sequelize";
 
-const sequelize = new Sequelize("mysql://root@localhost:3306/players", { dialect: "mysql" });
+const sequelize = new Sequelize(process.env.sql, { dialect: "postgres" });
 
 export const players_database = sequelize.define('players', {
     Id: {
